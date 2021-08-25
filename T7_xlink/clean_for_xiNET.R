@@ -8,3 +8,4 @@ setwd("/Users/simone/Documents/UT/marcotte/T7_xlink")
 
 # Load data
 xlink <- read.csv("2021_08_17_T7_DSSO_Crosslinks.csv")
+

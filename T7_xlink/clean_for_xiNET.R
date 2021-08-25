@@ -4,14 +4,19 @@
 ## Do First ####################################################################
 
 # Load Libraries
-  library(reticulate)
-
+  library(seqinr)
+  library(Biostrings)
+  library(dplyr)
+s
 # Set working directory
   setwd("/Users/simone/Documents/UT/marcotte/T7_xlink")
 
 # Load data
   xlink <- read.csv("2021_08_17_T7_DSSO_Crosslinks.csv")
-
+  fasta <- read.fasta("T7_phage_UP000000840_10760.fasta") %>% unlist()
+    # Making fasta data frame
+      fasta_dataframe <- data.frame(matrix(fasta, nrow = length(fasta), byrow = TRUE))
+      
 ################################################################################
 
 # Removing unwanted columns
@@ -21,6 +26,7 @@
   colnames(xlink) <- c("Score","Protein1","LinkPos1","Protein2","LinkPos2")
 
 # Giving xlink fasta names
+  xlink$Name <- sub("_","",watershed$SHORT_NAME)
   
   
   

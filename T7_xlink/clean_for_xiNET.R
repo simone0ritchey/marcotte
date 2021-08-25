@@ -3,11 +3,10 @@
 
 ## Do First ####################################################################
 
-# Load Libraries
+# Load libraries
   library(seqinr)
-  library(Biostrings)
   library(dplyr)
-s
+
 # Set working directory
   setwd("/Users/simone/Documents/UT/marcotte/T7_xlink")
 
@@ -27,6 +26,8 @@ s
 
 # Giving xlink fasta names
   xlink$Name <- sub("_","",watershed$SHORT_NAME)
+  watershed2012 <- select(watershed, -contains("2011"))
+    # I think using the contains is the key
   
   
   

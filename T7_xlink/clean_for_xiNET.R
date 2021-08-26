@@ -40,6 +40,7 @@
     }
     
     fasta_name <- sub(description, "", fasta_file[description_lines])
+    fasta_name <- gsub(" .*","",fasta_name)
     
     xlink_name <- gsub("sp\\|","",fasta_name)
     xlink_name <- gsub("\\|.*","",xlink_name)
@@ -55,7 +56,7 @@
   name_bridge <- seq_length_tbl("/Users/simone/Documents/UT/marcotte/T7_xlink/T7_phage_UP000000840_10760.fasta")
   
 # Giving xlink data frame fasta names
-   
-  
+  xlink$Protein1 <- name_bridge$fasta_name[match(xlink$Protein1, name_bridge$xlink_name)]
+  xlink$Protein2 <- name_bridge$fasta_name[match(xlink$Protein2, name_bridge$xlink_name)]
   
   

@@ -1,6 +1,9 @@
 ### Clean data for xiNET
 ### Simone Ritchey for Marcotte lab
 
+# Load packages
+  library(stringr)
+
 # Load xlink data
   setwd("/Users/simone/Documents/UT/marcotte/T7_xlink")
   xlink <- read.csv("2021_08_17_T7_DSSO_Crosslinks.csv")
@@ -11,7 +14,7 @@
 # Changing column names
   colnames(xlink) <- c("Score","Protein1","LinkPos1","Protein2","LinkPos2")
   
-# Making seq_length_tbl function from https://rdrr.io/github/seankross/warppipe/src/R/seq_length_tbl.R
+# Making seq_length_tbl function modified from https://rdrr.io/github/seankross/warppipe/src/R/seq_length_tbl.R
   seq_length_tbl <- function(path, description = "^>", comment = "^;"){
     # Read fasta file
     fasta_file <- readLines(path)
@@ -48,14 +51,11 @@
                xlink_name = xlink_name)
   }
   
-# Making data frame from fasta file
-  fasta <- seq_length_tbl("/Users/simone/Documents/UT/marcotte/T7_xlink/T7_phage_UP000000840_10760.fasta")
+# Making data frame from fasta file containing fasta name and xlink name
+  name_bridge <- seq_length_tbl("/Users/simone/Documents/UT/marcotte/T7_xlink/T7_phage_UP000000840_10760.fasta")
   
-# Giving xlink data fasta names
-  # I think mutate() contains() is key
-  
-  # Remove part after BPT7
-  fasta$Description <- gsub("\\ .*","",fasta$Description)
+# Giving xlink data frame fasta names
+   
   
   
   

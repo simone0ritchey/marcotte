@@ -36,21 +36,24 @@
       sections[[i]] <- seq(fencepost_lines[i] + 1, fencepost_lines[i + 1] - 1)
     }
     
-    len <- lapply(sections, 
-                  function(x, file = fasta_file){
-                    sum(str_length(file[x]))
-                  })
-    len <- unlist(len)
-    
+    fasta_name <- sub(description, "", fasta_file[description_lines])
+      # Remove everything after " "
+        xlink_name <- gsub("\\ .*","",fasta_name)
+      # idk
+        xlink_name <- gsub("\\P.*","",fasta_name)
     # Create data frame
-    data.frame(Description = sub(description, "", fasta_file[description_lines]),
-               sequence_length = len)
+    data.frame(fasta_name = fasta_name,
+               xlink_name = xlink_name)
   }
   
 # Making data frame from fasta file
   fasta <- seq_length_tbl("/Users/simone/Documents/UT/marcotte/T7_xlink/T7_phage_UP000000840_10760.fasta")
   
 # Giving xlink data fasta names
-  # I think contains is key
-
+  # I think mutate() contains() is key
+  
+  # Remove part after BPT7
+  fasta$Description <- gsub("\\ .*","",fasta$Description)
+  
+  
   

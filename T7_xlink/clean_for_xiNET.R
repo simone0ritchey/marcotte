@@ -37,10 +37,12 @@
     }
     
     fasta_name <- sub(description, "", fasta_file[description_lines])
-      # Remove everything after " "
-        xlink_name <- gsub("\\ .*","",fasta_name)
-      # idk
-        xlink_name <- gsub("\\P.*","",fasta_name)
+    
+    xlink_name <- gsub("sp\\|","",fasta_name)
+    xlink_name <- gsub("\\|.*","",xlink_name)
+      
+    # delete everything after bracket
+    
     # Create data frame
     data.frame(fasta_name = fasta_name,
                xlink_name = xlink_name)

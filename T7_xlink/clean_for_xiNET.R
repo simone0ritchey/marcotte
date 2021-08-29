@@ -56,6 +56,7 @@
   name_bridge <- seq_length_tbl("/Users/simone/Documents/UT/marcotte/T7_xlink/T7_phage_UP000000840_10760.fasta")
   
 # Giving xlink data frame fasta names
+  # It says there are no matches between Protein1 and fasta_name
   xlink$Protein1 <- name_bridge$fasta_name[match(xlink$Protein1, name_bridge$xlink_name)]
   xlink$Protein2 <- name_bridge$fasta_name[match(xlink$Protein2, name_bridge$xlink_name)]
   

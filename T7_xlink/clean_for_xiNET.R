@@ -1,7 +1,7 @@
 ### Clean data for xiNET
 ### Simone Ritchey for Marcotte lab
 
-### To use ########################################################
+### To use #####################################################################
 
 # Edit working directory - line 18
 # Edit xlink data file name - line 19

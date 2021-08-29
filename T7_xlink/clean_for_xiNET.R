@@ -60,9 +60,9 @@
   xlink$Protein1 <- name_bridge$fasta_name[match(xlink$Protein1, name_bridge$xlink_name)]
   xlink$Protein2 <- name_bridge$fasta_name[match(xlink$Protein2, name_bridge$xlink_name)]
   
-# Seeing if the name appears when I use the non-modified/minimally modified function
+# Looking for where I fudged up w/ the modification
   
-  seq_length_tbl <- function(path, description = "^>", comment = "^;"){
+  seq_length_tbl_mod <- function(path, description = "^>", comment = "^;"){
     # Read fasta file
     fasta_file <- readLines(path)
     
@@ -86,16 +86,27 @@
       sections[[i]] <- seq(fencepost_lines[i] + 1, fencepost_lines[i + 1] - 1)
     }
     
+  # Putting this back because I deleted it when I modified the function, maybe it is important
     len <- lapply(sections, 
                   function(x, file = fasta_file){
                     sum(str_length(file[x]))
                   })
     len <- unlist(len)
     
+  # Remove "^>" from fasta name  
+    fasta_name <- sub(description, "", fasta_file[description_lines])
+  # Remove everything after the space in the fasta name
+    fasta_name <- gsub(" .*","",fasta_name)
+    
+    xlink_name <- gsub("sp\\|","",fasta_name)
+    xlink_name <- gsub("\\|.*","",xlink_name)
+    
+    # delete everything after bracket
+    
     # Create data frame
-    data.frame(Description = sub(description, "", fasta_file[description_lines]),
-               sequence_length = len)
+    data.frame(fasta_name = fasta_name,
+               xlink_name = xlink_name)
   }
-
-  unmodified_function_product <- seq_length_tbl("/Users/simone/Documents/UT/marcotte/T7_xlink/T7_phage_UP000000840_10760.fasta")  
+  
+  solution_check <- seq_length_tbl_mod("/Users/simone/Documents/UT/marcotte/T7_xlink/T7_phage_UP000000840_10760.fasta")  
   

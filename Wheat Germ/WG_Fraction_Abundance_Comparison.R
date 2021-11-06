@@ -10,13 +10,13 @@
   fortytoseventy <- read.csv("2021_09_27_WG_40_70_Proteins.csv")
 
 # Load Packages
-  library(dplyr)
 
 ################################################################################
 
-# Test to see if this is the function I want to use
-  zerotoforty_test <- zerotoforty$Description %>% 
-    select(contains(1))
+# Make vector containing all MSC protein Triticum Aestivum assension numbers
+  MSC_proteins <- c("A0A3B6IS75","A0A3B6JFS6","A0A3B6KRE7","A0A3B6LV87","A0A3B6NT35","A0A3B6NUU4","A0A3B6NSH2","A0A3B6MYA0","A0A3B6PLS2","A0A3B6NU06","A0A3B6QH08","A0A3B6QK64","A0A3B6NSW4","A0A3B6NT35","A0A3B6QK88")
 
-# What are these things related to tRNA ligase
+  
+  
+
 

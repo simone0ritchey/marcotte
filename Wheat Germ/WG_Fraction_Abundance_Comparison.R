@@ -22,7 +22,7 @@
 
 # Searching for MSC proteins
     
-  
-  
+  zero_forty_MSC_Proteins <- zerotoforty[zerotoforty$Accession %in% MSC_proteins,]
+  forty_seventy_MSC_Proteins <- fortytoseventy[fortytoseventy$Accession %in% MSC_proteins,]
 
 

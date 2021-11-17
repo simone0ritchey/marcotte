@@ -20,9 +20,11 @@
     tRNA__ligase_proteins <- read.csv("tRNA_ligases_from_uniport.csv")
     MSC_proteins <- MSC_proteins %>% append(tRNA__ligase_proteins$Entry) %>% unique()
 
-# Searching for MSC proteins
+# Searching for MSC proteins in each fraction and compare abundances
     
-  zero_forty_MSC_Proteins <- zerotoforty[zerotoforty$Accession %in% MSC_proteins,]
-  forty_seventy_MSC_Proteins <- fortytoseventy[fortytoseventy$Accession %in% MSC_proteins,]
+  zero_forty_MSC_proteins <- zerotoforty[zerotoforty$Accession %in% MSC_proteins,] %>% subset(select = c("Accession","Description","Number.of.PSMs"))
+  forty_seventy_MSC_proteins <- fortytoseventy[fortytoseventy$Accession %in% MSC_proteins,] %>% subset(select = c("Accession","Description","Number.of.PSMs"))
 
+
+  
 

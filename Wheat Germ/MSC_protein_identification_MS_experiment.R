@@ -38,8 +38,7 @@ for (i in (1:length(zerotoforty$X))) {
     forty_seventy_MSC_proteins <- vector()
     for (i in (1:length(MSC_proteins))) {
       if (TRUE %in% str_detect(zerotoforty$X, MSC_proteins[i])) {
-        append(forty)
-        forty_seventy_MSC_proteins[nrow(forty_seventy_MSC_proteins) + 1,] = c(MSC_proteins[i])
+        forty_seventy_MSC_proteins <- append(forty_seventy_MSC_proteins, MSC_proteins[i])
       }
     }
 

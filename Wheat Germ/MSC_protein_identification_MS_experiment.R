@@ -20,9 +20,15 @@ library(stringr)
 
 # Searching for MSC proteins in each sample and make dataset containing list
 
-for (i in (1:length(MSC_proteins))) {
-  zero_forty_MSC_proteins <- zerotoforty[str_detect(zerotoforty$X, MSC_proteins[i]),]
-}
+  # Zero to Forty
+    for (i in (1:length(MSC_proteins))) {
+      zero_forty_MSC_proteins <- zerotoforty[str_detect(zerotoforty$X, MSC_proteins[i]),]
+    }
 
-  zero_forty_MSC_proteins <- zerotoforty[str_detect(zerotoforty$X, MSC_proteins[i]),]
+  # Forty to Seventy
+    for (i in (1:length(MSC_proteins))) {
+      forty_seventy_MSC_proteins <- fortytoseventy[str_detect(fortytoseventy$X, MSC_proteins[i]),]
+    }
+
+  zero_forty_MSC_proteins <- zerotoforty[str_detect(zerotoforty$X, "A0A3B6KP36"),]
   forty_seventy_MSC_proteins <- fortytoseventy[fortytoseventy$Accession %in% MSC_proteins,] %>% subset(select = c("Accession","Description","Number.of.PSMs"))

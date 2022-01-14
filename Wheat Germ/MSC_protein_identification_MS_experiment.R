@@ -7,6 +7,7 @@ setwd("/Users/simone/Documents/UT/marcotte/Wheat Germ")
 # Load Data
 zerotoforty <- read.csv("WG_SEC_0_40.prot_count_mFDRpsm001 copy.csv")
 fortytoseventy <- read.csv("WG_SEC_40_70.prot_count_mFDRpsm001 copy.csv")
+histone_df <- read.csv("Wheat_Reviewed_Histones.csv")
 
 # Load Packages
 library(stringr)
@@ -35,4 +36,26 @@ library(stringr)
         forty_seventy_MSC_proteins <- append(forty_seventy_MSC_proteins, MSC_proteins[i])
       }
     }
+    
+# Looking for histones in each sample
+    
+    # Make vector of histone assesion numbers
+    histones <- histone_df$Entry.name
+  
+    # Zero to Forty
+    zero_forty_histone_proteins <- vector()
+    for (i in (1:length(histones))) {
+      if (TRUE %in% str_detect(zerotoforty$X, histones[i])) {
+        zero_forty_histone_proteins <- append(zero_forty_histone_proteins, histones[i])
+      }
+    }
+    
+    # Forty to Seventy
+    forty_seventy_histone_proteins <- vector()
+    for (i in (1:length(histones))) {
+      if (TRUE %in% str_detect(fortytoseventy$X, histones[i])) {
+        forty_seventy_histone_proteins <- append(forty_seventy_histone_proteins, histones[i])
+      }
+    }  
+
     

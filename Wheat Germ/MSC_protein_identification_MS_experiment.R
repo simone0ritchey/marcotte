@@ -21,14 +21,46 @@ library(stringr)
 # Searching for MSC proteins in each sample and make dataset containing list
 
   # Zero to Forty
+    zero_forty_MSC_proteins <- vector()
     for (i in (1:length(MSC_proteins))) {
-      zero_forty_MSC_proteins <- zerotoforty[str_detect(zerotoforty$X, MSC_proteins[i]),]
-    }
+      select <- str_detect(fortytoseventy$X, MSC_proteins[i])}
+      for (i in (1:length(select))) {
+        if (select[i] = TRUE) {
+          append(zero_forty_MSC_proteins, MSC_proteins[i])
+        }
+      }
+      }
+for (i in (1:length(zerotoforty$X))) {
+  if zerotoforty$X
+}
 
   # Forty to Seventy
+    forty_seventy_MSC_proteins <- vector()
     for (i in (1:length(MSC_proteins))) {
-      forty_seventy_MSC_proteins <- fortytoseventy[str_detect(fortytoseventy$X, MSC_proteins[i]),]
+      if (TRUE %in% str_detect(zerotoforty$X, MSC_proteins[i])) {
+        append(forty)
+        forty_seventy_MSC_proteins[nrow(forty_seventy_MSC_proteins) + 1,] = c(MSC_proteins[i])
+      }
     }
 
-  zero_forty_MSC_proteins <- zerotoforty[str_detect(zerotoforty$X, "A0A3B6KP36"),]
+  str_detect(fortytoseventy$X, MSC_proteins[i])
+   
+  # append dataframe
+  zero_forty_MSC_proteins[nrow(zero_forty_MSC_proteins) + 1,] = c(zerotoforty[X])
+  
+  
+  
+  zero_forty_MSC_proteins <- zerotoforty[str_detect(zerotoforty$X, MSC_proteins[i]),]
   forty_seventy_MSC_proteins <- fortytoseventy[fortytoseventy$Accession %in% MSC_proteins,] %>% subset(select = c("Accession","Description","Number.of.PSMs"))
+
+
+  
+  for (i in (1:length(MSC_proteins))) {
+    if (TRUE %in% str_detect(zerotoforty$X, MSC_proteins[i])) {
+      zero_forty_MSC_proteins[nrow(zero_forty_MSC_proteins) + 1,] = c(MSC_proteins[i])
+    }
+  }
+  
+  zero_forty_MSC_proteins <- zerotoforty[zerotoforty$Accession %in% MSC_proteins,] %>% subset(select = c("Accession","Description","Number.of.PSMs"))
+  forty_seventy_MSC_proteins <- fortytoseventy[fortytoseventy$Accession %in% MSC_proteins,] %>% subset(select = c("Accession","Description","Number.of.PSMs"))
+  

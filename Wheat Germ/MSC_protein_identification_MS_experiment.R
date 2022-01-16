@@ -8,7 +8,7 @@ setwd("/Users/simone/Documents/UT/marcotte/Wheat Germ")
 zerotoforty <- read.csv("WG_SEC_0_40.prot_count_mFDRpsm001 copy.csv")
 fortytoseventy <- read.csv("WG_SEC_40_70.prot_count_mFDRpsm001 copy.csv")
 histone_df <- read.csv("Wheat_Reviewed_Histones.csv")
-tRNA__ligase_proteins <- read.csv("tRNA_ligases_from_uniport.csv")
+tRNA_ligase_proteins <- read.csv("tRNA_ligases_from_uniport.csv")
 
 # Load Packages
 library(stringr)
@@ -62,7 +62,7 @@ library(stringr)
 # Looking for other tRNA ligases in each sample
     
     # Make vector of tRNA ligase assession numbers
-    tRNA_ligases <- tRNA__ligase_proteins$Entry.name
+    tRNA_ligases <- tRNA_ligase_proteins$Entry.name
  
     # Zero to Forty
     zero_forty_ligase_proteins <- vector()
@@ -79,4 +79,12 @@ library(stringr)
         forty_seventy_ligase_proteins <- append(forty_seventy_ligase_proteins, tRNA_ligases[i])
       }
     }  
+
+# Identifying tRNA ligases in each sample 
+    
+    # Zero to Forty
+    zero_forty_ligase_proteins_with_names <- tRNA_ligase_proteins[tRNA_ligase_proteins$Entry.name %in% zero_forty_ligase_proteins,] %>% subset(select = c("Entry.name","Protein.names"))
+    
+    # Forty to Seventy
+    forty_seventy_ligase_proteins_with_names <- tRNA_ligase_proteins[tRNA_ligase_proteins$Entry.name %in% forty_seventy_ligase_proteins,] %>% subset(select = c("Entry.name","Protein.names"))
     
